@@ -8,7 +8,7 @@ cd ..
 cd ssd
 #./install_pycuda.sh
 cd ..
-#cd plugins
+cd plugins
 #make
 cd ..
 python3 trt_yolo_with_centernet.py --video /home/ee201511281/sample_mask.mp4 -m yolov4-tiny-416
