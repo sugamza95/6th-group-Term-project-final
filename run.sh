@@ -1,8 +1,14 @@
 #!/bin/bash
 
 cd tensorrt_demos
-git clone https://github.com/NVIDIA-AI-IOT/trt_pose.git
+#git clone https://github.com/NVIDIA-AI-IOT/trt_pose.git
 cd trt_pose
-sudo python3 setup.py install
+#sudo python3 setup.py install
+cd ..
+cd ssd
+#./install_pycuda.sh
+cd ..
+#cd plugins
+#make
 cd ..
 python3 trt_yolo_with_centernet.py --video /home/ee201511281/sample_mask.mp4 -m yolov4-tiny-416
