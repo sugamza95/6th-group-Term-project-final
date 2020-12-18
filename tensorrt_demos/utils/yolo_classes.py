@@ -4,8 +4,10 @@ NOTE: Number of YOLO COCO output classes differs from SSD COCO models.
 """
 
 COCO_CLASSES_LIST = [
-    'person',
-    'bicycle',
+    #'person',
+    #'bicycle',
+    'no mask',
+    'mask',
     'car',
     'motorbike',
     'aeroplane',

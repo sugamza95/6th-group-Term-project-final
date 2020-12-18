@@ -286,8 +286,22 @@ class TrtYOLO(object):
 
         boxes, scores, classes = _postprocess_yolo(
             trt_outputs, img.shape[1], img.shape[0], conf_th)
-
+        #added part
+        no_mask_count = 0
+        mask_count = 0
+        if classes.size != 0 : #one dimension fifth list
+            #print(classes.dtype) fp32
+            tmp = classes.size 
+            for i in range(tmp):
+                #print('class = %f\n'%(classes[i]))
+                if classes[i] == 0:
+                    no_mask_count = no_mask_count + 1
+                elif classes[i] == 1:
+                    mask_count = mask_count + 1
+            #print(classes.size)
+        #end
         # clip x1, y1, x2, y2 within original image
         boxes[:, [0, 2]] = np.clip(boxes[:, [0, 2]], 0, img.shape[1]-1)
         boxes[:, [1, 3]] = np.clip(boxes[:, [1, 3]], 0, img.shape[0]-1)
-        return boxes, scores, classes
+        
+        return boxes, scores, classes, no_mask_count, mask_count #added no_mask_count, mask_count variable
